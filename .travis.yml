@@ -1,0 +1,25 @@
+---
+sudo: required
+services:
+  - docker
+
+language: ruby
+rvm:
+  - 2.7
+cache: bundler
+
+env:
+  - PHP_VERSION: 7.4
+
+before_install:
+  - docker pull hadolint/hadolint
+
+script:
+  - docker run -i hadolint/hadolint hadolint --ignore DL3018 - < "${PHP_VERSION}"/Dockerfile
+  - bundle exec rspec spec/"${PHP_VERSION}"_spec.rb
+
+after_success:
+  - docker images
+
+notifications:
+  email: false
