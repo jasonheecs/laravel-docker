@@ -1,6 +1,6 @@
 FROM php:7.4-fpm-alpine
 
-LABEL name="jasonheecs/laravel-docker-compose"
+LABEL name="jasonheecs/laravel-docker"
 LABEL version="1.0.0"
 LABEL maintainer="hello@jasonhee.com"
 
